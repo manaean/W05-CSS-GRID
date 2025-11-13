@@ -1,0 +1,107 @@
+:root{
+  --gap: 20px;
+  --page-pad: 24px;
+  --card-bg: #fff;
+  --frame-bg: #f5f6f8;
+  --muted: #666;
+  --btn-bg: #666;
+  --btn-color: #fff;
+}
+
+/* Reset-ish */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--frame-bg);
+  display: flex;
+  justify-content: center;
+  padding: var(--page-pad);
+  color: #111;
+}
+
+/* page width control */
+.page {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* heading */
+h1 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+}
+
+/* (1) Container grid for the cards — default: 1 column (mobile) */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* 1 column by default (phone) */
+  gap: var(--gap);
+}
+
+/* (2) Each card is its own grid so button aligns to bottom */
+.card {
+  background: var(--card-bg);
+  border-radius: 6px;
+  padding: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* media / body (flex) / actions */
+  gap: 12px;
+  min-height: 220px;
+}
+
+/* media placeholder */
+.card__media {
+  height: 150px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(#e6e6e6,#dcdcdc);
+  color: #999;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* body */
+.card__title {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+.card__desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+/* actions: button centered horizontally and vertically aligned because of grid rows */
+.card__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* simple button */
+.btn {
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  border: 0;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+
+@media (min-width: 602px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  }
+}
+
+/* Extra-large screens */
+@media (min-width: 1025px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  }
+}
